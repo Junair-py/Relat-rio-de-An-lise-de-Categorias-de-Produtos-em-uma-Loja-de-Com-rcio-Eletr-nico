@@ -1,0 +1,49 @@
+# Visualização Interativa de Dados Socioeconômicos
+
+## Descrição
+
+Este projeto visa criar uma visualização interativa em 3D para explorar e analisar a relação entre três variáveis socioeconômicas cruciais: **Idade**, **Renda** e **Pontuação de Crédito**. A visualização permite a exploração detalhada de como essas variáveis interagem e afetam umas às outras, oferecendo uma ferramenta poderosa para análise de dados e tomada de decisões baseadas em informações quantitativas.
+
+## Objetivo
+
+O objetivo principal deste projeto é fornecer uma compreensão visual clara e interativa das seguintes questões:
+- Como a idade de um indivíduo está correlacionada com sua renda e pontuação de crédito?
+- Quais padrões podem ser identificados entre diferentes faixas etárias e seus comportamentos financeiros?
+- Como a renda e a pontuação de crédito se relacionam entre si e variam com a idade?
+
+Estas informações são valiosas para analistas de dados, pesquisadores e tomadores de decisão em áreas como marketing, finanças pessoais e planejamento estratégico.
+
+## Dados
+
+Os dados utilizados para a visualização foram extraídos de um arquivo CSV contendo informações detalhadas sobre os indivíduos. As principais variáveis presentes no dataset são:
+
+- **Idade**: A idade do indivíduo, geralmente expressa em anos. Esta variável pode revelar tendências em como diferentes faixas etárias gerenciam suas finanças.
+- **Renda**: A renda anual do indivíduo, medida em uma unidade monetária específica (por exemplo, dólares, euros). A renda é um indicador importante da capacidade financeira.
+- **Pontuação de Crédito**: Uma avaliação numérica do crédito do indivíduo, geralmente obtida de instituições financeiras. Esta pontuação reflete a confiabilidade do indivíduo em termos de pagamento de dívidas.
+
+O arquivo CSV pode ser visualizado como segue:
+
+Idade,Renda,Pontuação de Crédito
+25,50000,700
+40,75000,650
+60,100000,800
+...
+
+markdown
+Copiar código
+
+## Requisitos
+
+Para executar o notebook e visualizar a análise, você precisará das seguintes ferramentas e bibliotecas:
+
+- **Python 3.x**
+- **Bibliotecas**:
+  - `numpy` para manipulação de arrays e cálculos matemáticos.
+  - `pandas` para leitura e manipulação de dados.
+  - `matplotlib` e `plotly` para criação de gráficos e visualizações interativas.
+  - `scikit-learn` para análise de dados e possível modelagem.
+
+Para instalar as bibliotecas necessárias, execute:
+
+```bash
+pip install numpy pandas matplotlib plotly scikit-learn
