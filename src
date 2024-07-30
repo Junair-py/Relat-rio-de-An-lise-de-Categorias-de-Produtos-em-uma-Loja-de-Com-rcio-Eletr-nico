@@ -1,0 +1,75 @@
+import pandas as pd
+import plotly.express as px
+import io
+import requests
+
+# Função para baixar o arquivo do Google Drive
+def download_file_from_google_drive(id):
+    URL = "https://drive.google.com/uc?export=download"
+
+    session = requests.Session()
+
+    response = session.get(URL, params={'id': id}, stream=True)
+    token = get_confirm_token(response)
+
+    if token:
+        params = {'id': id, 'confirm': token}
+        response = session.get(URL, params=params, stream=True)
+
+    return io.BytesIO(response.content)
+
+# Função auxiliar para obter o token de confirmação
+def get_confirm_token(response):
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            return value
+    return None
+
+# ID do arquivo no Google Drive (extraído do link fornecido)
+file_id = '1nkAgMHwOVHDgxQO0rDei-XRBecSnnt63'
+
+# Baixar e ler o arquivo
+file_data = download_file_from_google_drive(file_id)
+df = pd.read_csv(file_data)
+
+# Exibir as primeiras linhas do dataframe para entender a estrutura
+print(df.head())
+
+# Exibir os nomes das colunas
+print("Nomes das colunas do DataFrame:", df.columns)
+
+# Colunas a serem usadas para o gráfico 3D
+columns_to_use = ['Age', 'Income', 'Credit Score']
+
+# Verificar se as colunas existem no DataFrame
+missing_columns = [col for col in columns_to_use if col not in df.columns]
+if missing_columns:
+    raise KeyError(f"As colunas {missing_columns} não foram encontradas no DataFrame.")
+
+# Exemplo de limpeza de dados
+df = df.dropna(subset=columns_to_use)  # Remover linhas com valores nulos nas colunas especificadas
+
+# Exibir informações sobre o dataframe após a limpeza
+print(df.info())
+
+# Ajustar a escala dos eixos
+fig = px.scatter_3d(
+    df, 
+    x='Age', 
+    y='Income', 
+    z='Credit Score', 
+    color='Credit Score', 
+    title='Gráfico 3D de Idade, Renda e Pontuação de Crédito'
+)
+
+# Ajuste os títulos dos eixos para uma melhor compreensão
+fig.update_layout(
+    scene=dict(
+        xaxis=dict(title='Idade'),
+        yaxis=dict(title='Renda'),
+        zaxis=dict(title='Pontuação de Crédito')
+    ),
+    margin=dict(l=0, r=0, b=0, t=40)  # Ajustar margens para melhor visualização
+)
+
+fig.show()
