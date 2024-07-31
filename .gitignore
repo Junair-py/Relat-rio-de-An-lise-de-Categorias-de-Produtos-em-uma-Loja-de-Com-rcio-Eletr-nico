@@ -1,0 +1,32 @@
+
+### `.gitignore`
+
+Este arquivo está adequado para o contexto descrito. Apenas certifique-se de que está colocando as regras apropriadas para o ambiente do seu projeto.
+
+```plaintext
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment
+.env
+venv/
+env/
+ENV/
+
+# Data files
+data/*.csv
+
+# Output files
+output/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
