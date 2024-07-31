@@ -1,9 +1,3 @@
-
-### `.gitignore`
-
-Este arquivo está adequado para o contexto descrito. Apenas certifique-se de que está colocando as regras apropriadas para o ambiente do seu projeto.
-
-```plaintext
 # Python
 *.pyc
 *.pyo
@@ -21,12 +15,19 @@ ENV/
 
 # Data files
 data/*.csv
+data/*.xlsx
 
 # Output files
 output/
 *.log
 
+# Plotly cache
+*.html
+
 # IDEs
 .vscode/
 .idea/
 *.swp
+
+# Python virtual environment
+.venv/
